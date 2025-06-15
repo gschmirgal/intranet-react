@@ -1,0 +1,44 @@
+/* définition des couleurs */
+
+:root {
+  --vert-bg: 170,228,190;
+  --vert-p: 22,184,78;
+  --orange-bg: 247,207,168;
+  --orange-p: 237,127,16;
+  --rouge-bg: 231,191,190;
+  --rouge-p: 192,80,77;
+  --violet-bg: 208,198,220;
+  --violet-p: 128,100,162;
+  --vert-fonce-bg: 217,229,194;
+  --vert-fonce-p: 155,187,89;
+  --bleu-fonce-bg: 190,208,230;
+  --bleu-fonce-p: 78,129,189;
+  --bleu-clair-bg: 189,224,233;
+  --bleu-clair-p: 75,172,198;
+  --bleu-bg: 179,191,232;
+  --bleu-p: 47,80,193;
+  --gris-bg: 204,204,204;
+  --gris-p: 128,128,128;
+}
+
+.color-block {
+  background-color: rgba(var(--color-bg), 0.75);
+  transition: background 0.2s;
+}
+.color-block:hover {
+  background-color: rgb(var(--color-bg));
+}
+.color-block .tuile p {
+  background-color: rgba(var(--color-p), 0.75);
+}
+
+/* Couleurs spécifiques */
+.vert         { --color-bg: var(--vert-bg);         --color-p: var(--vert-p); }
+.orange       { --color-bg: var(--orange-bg);       --color-p: var(--orange-p); }
+.rouge        { --color-bg: var(--rouge-bg);        --color-p: var(--rouge-p); }
+.violet       { --color-bg: var(--violet-bg);       --color-p: var(--violet-p); }
+.vert_fonce   { --color-bg: var(--vert-fonce-bg);   --color-p: var(--vert-fonce-p); }
+.bleu_fonce   { --color-bg: var(--bleu-fonce-bg);   --color-p: var(--bleu-fonce-p); }
+.bleu_clair   { --color-bg: var(--bleu-clair-bg);   --color-p: var(--bleu-clair-p); }
+.bleu         { --color-bg: var(--bleu-bg);         --color-p: var(--bleu-p); }
+.gris         { --color-bg: var(--gris-bg);         --color-p: var(--gris-p); }

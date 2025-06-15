@@ -1,70 +1,156 @@
-# Getting Started with Create React App
+# Intranet React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ce projet est une application d’intranet réalisée avec [React](https://react.dev/) et bootstrappée avec [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Fonctionnalités
 
-In the project directory, you can run:
+- Affichage de blocs et de tuiles dynamiques à partir d’un fichier JSON (`public/sites.json`)
+- Styles personnalisés avec gestion centralisée des couleurs (`src/css/App_colors.css`)
+- Responsive et moderne grâce à Flexbox et CSS custom
+- Facilement personnalisable via le JSON et les fichiers CSS
 
-### `npm start`
+## Structure du projet
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+intranet-react/
+├── public/
+│   └── sites.json           # Données des blocs/tuiles (JSON)
+├── src/
+│   ├── components/
+│   │   ├── Body.js          # Composant principal qui gère l'affichage global
+│   │   ├── Bloc.js          # Composant pour chaque bloc
+│   ├── css/
+│   │   ├── App_common.css   # Styles communs à toute l'application
+│   │   ├── App_colors.css   # Couleurs centralisées (variables CSS)
+│   │   └── App_screen.css   # Styles spécifiques à l'affichage écran
+│   ├── components/          # Images statiques (backgrounds, logos, etc.)
+│   ├── index.js             # Point d’entrée React
+└── README.md
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Place tes images dans `src/images/` si tu utilises des backgrounds ou des logos.
+- Les composants sont rangés dans `src/components/` 
+- Les fichiers CSS sont regroupés dans `src/css/` pour séparer les styles du code.
 
-### `npm test`
+## Structure du fichier JSON (`public/sites.json`)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Le fichier `sites.json` contient la liste des blocs et des tuiles à afficher sur l’intranet.
 
-### `npm run build`
+### Exemple de structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```json
+{
+  "blocs": [
+    {
+      "titre": "Bloc 1",
+      "couleur": "vert",           // (optionnel) Nom d’une couleur définie dans App_colors.css
+      "tuiles": [
+        {
+          "nom": "Application A",  // Nom affiché sur la tuile
+          "lien": "http://app-a.example.com/", // (optionnel) Lien principal de la tuile
+          "lignes": [              // (optionnel) Liste de sous-liens ou d’informations
+            { "lien": "http://env-a1.example.com/", "nom": "Environnement 1" },
+            { "lien": "http://env-a2.example.com/", "nom": "Environnement 2" }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Champs principaux
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `blocs` : Tableau de blocs à afficher.
+  - `titre` : Titre du bloc.
+  - `couleur` : (optionnel) Nom d’une couleur CSS (ex : `vert`, `bleu_fonce`, etc.).
+  - `tuiles` : Tableau de tuiles dans le bloc.
+    - `nom` : Nom de la tuile.
+    - `lien` : (optionnel) Lien principal de la tuile.
+    - `lignes` : (optionnel) Tableau d’objets avec :
+      - `nom` : Nom du sous-lien ou de l’information.
+      - `lien` : (optionnel) Lien associé.
 
-### `npm run eject`
+**Remarques :**
+- Les champs `couleur`, `lien` et `lignes` sont optionnels.
+- Les couleurs doivent correspondre à celles définies dans `App_colors.css`.
+- Vous pouvez ajouter ou retirer des blocs/tuiles selon vos besoins.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Ajouter une couleur personnalisée
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Pour ajouter une nouvelle couleur utilisable dans vos blocs :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Ouvrez** le fichier `src/css/App_colors.css`.
+2. **Ajoutez** une nouvelle variable de couleur dans la section `:root`, par exemple :
+   ```css
+   :root {
+     --ma-couleur-bg: 210,210,255;
+     --ma-couleur-p: 60,60,200;
+     /* ...autres couleurs... */
+   }
+   ```
+3. **Ajoutez** une classe pour cette couleur :
+   ```css
+   .ma_couleur {
+     --color-bg: var(--ma-couleur-bg);
+     --color-p: var(--ma-couleur-p);
+   }
+   ```
+4. **Utilisez** le nom de la couleur (`ma_couleur`) dans le champ `couleur` de votre bloc dans le JSON.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Exemple d’utilisation dans le JSON :**
+```json
+{
+  "titre": "Bloc personnalisé",
+  "couleur": "ma_couleur",
+  "tuiles": [ ... ]
+}
+```
 
-## Learn More
+## Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Cloner le dépôt**
+   ```sh
+   git clone <url-du-repo>
+   cd intranet-react
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. **Installer les dépendances**
+   ```sh
+   npm install
+   ```
 
-### Code Splitting
+3. **Lancer l’application**
+   ```sh
+   npm start
+   ```
+   L’application sera accessible sur [http://localhost:3000](http://localhost:3000).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Personnalisation
 
-### Analyzing the Bundle Size
+- **Données** : Modifiez `public/sites.json` pour changer les blocs, tuiles, liens, etc.
+- **Styles** : Adaptez les fichiers dans `src/css/` pour personnaliser l’apparence.
+- **Composants** : Ajoutez ou modifiez les composants React dans `src/`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Scripts disponibles
 
-### Making a Progressive Web App
+- `npm start` : Démarre le serveur de développement.
+- `npm run build` : Génère la version de production dans le dossier `build`.
+- `npm test` : Lance les tests unitaires (si présents).
+- `npm run eject` : Éjecte la configuration Create React App (opération irréversible).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Dépendances principales
 
-### Advanced Configuration
+- [React](https://react.dev/)
+- [Create React App](https://github.com/facebook/create-react-app)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Contribution
 
-### Deployment
+Les contributions sont les bienvenues !  
+N’hésitez pas à ouvrir une issue ou une pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Licence
 
-### `npm run build` fails to minify
+Ce projet est sous licence MIT.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---

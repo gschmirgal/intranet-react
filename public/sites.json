@@ -1,0 +1,136 @@
+{
+  "blocs": [
+    {
+      "titre": "Bloc 1",
+      "couleur": "vert",
+      "tuiles": [
+        {
+          "nom": "Application A",
+          "lien": "http://app-a.example.com/",
+          "lignes": [
+            { "lien": "http://env-a1.example.com/", "nom": "Environnement 1" },
+            { "lien": "http://env-a2.example.com/", "nom": "Environnement 2" },
+            { "lien": "http://env-a3.example.com/", "nom": "Environnement 3" }
+          ]
+        }
+      ]
+    },
+    {
+      "titre": "Bloc 2",
+      "tuiles": [
+        {
+          "nom": "Application B",
+          "lien": "http://app-b.example.com/",
+          "lignes": [
+            { "lien": "http://env-b1.example.com/", "nom": "Environnement 1" },
+            { "lien": "http://env-b2.example.com/", "nom": "Environnement 2" },
+            { "lien": "http://env-b3.example.com/", "nom": "Environnement 3" }
+          ]
+        },
+        {
+          "nom": "Application C",
+          "lien": "http://app-c.example.com/",
+          "lignes": [
+            { "lien": "http://env-c1.example.com/", "nom": "Environnement 1" },
+            { "lien": "http://env-c2.example.com/", "nom": "Environnement 2" },
+            { "lien": "http://env-c3.example.com/", "nom": "Environnement 3" }
+          ]
+        },
+        {
+          "nom": "Application D",
+          "lien": "http://app-d.example.com/"
+        }
+      ]
+    },
+    {
+      "titre": "Bloc 3",
+      "couleur": "bleu_fonce",
+      "tuiles": [
+        {
+          "nom": "Application E",
+          "lien": "http://app-e.example.com/",
+          "lignes": [
+            { "lien": "http://env-e1.example.com/", "nom": "Environnement 1" },
+            { "lien": "http://env-e2.example.com/", "nom": "Environnement 2" }
+          ]
+        },
+        {
+          "nom": "Application F",
+          "lien": "http://app-f.example.com/"
+        }
+      ]
+    },
+    {
+      "titre": "Bloc 4",
+      "couleur": "orange",
+      "tuiles": [
+        { "nom": "Outil 1", "lien": "http://outil1.example.com/" },
+        { "nom": "Outil 2", "lien": "http://outil2.example.com/" }
+      ]
+    },
+    {
+      "titre": "Bloc 5",
+      "couleur": "rouge",
+      "tuiles": [
+        {
+          "nom": "Support IT",
+          "lignes": [
+            { "lien": "mailto:support@example.com", "nom": "Mail Support" },
+            { "nom": "Téléphone: 0000" }
+          ]
+        },
+        { "nom": "Plateforme Technique", "lien": "http://plateforme.example.com/" }
+      ]
+    },
+    {
+      "titre": "Bloc 6",
+      "couleur": "violet",
+      "tuiles": [
+        {
+          "nom": "BI Admin",
+          "lignes": [
+            { "lien": "http://bi-admin.example.com/", "nom": "Admin" }
+          ]
+        },
+        {
+          "nom": "BI Utilisateur",
+          "lignes": [
+            { "lien": "http://bi-user.example.com/", "nom": "Utilisateur" }
+          ]
+        }
+      ]
+    },
+    {
+      "titre": "Bloc 7",
+      "couleur": "gris",
+      "tuiles": [
+        {
+          "nom": "Contact Entreprise",
+          "lignes": [
+            { "nom": "Entreprise - Adresse 1" },
+            { "nom": "Code Postal Ville" },
+            { "nom": "Tél: 0000" }
+          ]
+        },
+        {
+          "nom": "Transports",
+          "lignes": [
+            { "lien": "http://transports.example.com/", "nom": "Transports" }
+          ]
+        },
+        {
+          "nom": "Documents",
+          "lignes": [
+            { "lien": "http://documents.example.com/", "nom": "Documents" }
+          ]
+        },
+        {
+          "nom": "Accès Client",
+          "lignes": [
+            { "lien": "http://client.example.com/", "nom": "Lien client" }
+          ]
+        }
+      ]
+    }
+  ]
+}
