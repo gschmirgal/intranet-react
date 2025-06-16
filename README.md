@@ -24,8 +24,7 @@ intranet-react/
 │   │   ├── App_common.css   # Styles communs à toute l'application
 │   │   └── App_colors.css   # Couleurs centralisées (variables CSS)
 │   ├── images/              # Images utilisées dans le code (background, etc.)
-│   ├── index.js             # Point d’entrée React
-│   └── App.js               # Composant racine (si utilisé)
+│   └── index.js             # Point d’entrée React
 └── README.md
 ```
 
