@@ -87,10 +87,13 @@ p {
 /* Tuiles dans les blocs */
 .bloc .tuile {
   min-height: 20px;
-  max-height: 20px;
   transition: all 0.4s 0.2s;
 }
-.bloc .tuile:hover {
+.bloc .collapsed {
+  max-height: 20px;
+}
+
+.bloc .expanded, .bloc .tuile:hover {
   max-height: 800px;
 }
 .bloc .tuile p a {

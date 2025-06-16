@@ -19,18 +19,18 @@ intranet-react/
 │   ├── components/
 │   │   ├── Body.js          # Composant principal qui gère l'affichage global
 │   │   ├── Bloc.js          # Composant pour chaque bloc
+│   │   └── CheckBox.js      # Composant pour les cases à cocher (si utilisé)
 │   ├── css/
 │   │   ├── App_common.css   # Styles communs à toute l'application
-│   │   ├── App_colors.css   # Couleurs centralisées (variables CSS)
-│   │   └── App_screen.css   # Styles spécifiques à l'affichage écran
-│   ├── components/          # Images statiques (backgrounds, logos, etc.)
+│   │   └── App_colors.css   # Couleurs centralisées (variables CSS)
+│   ├── images/              # Images utilisées dans le code (background, etc.)
 │   ├── index.js             # Point d’entrée React
+│   └── App.js               # Composant racine (si utilisé)
 └── README.md
 ```
 
-- Place tes images dans `src/images/` si tu utilises des backgrounds ou des logos.
-- Les composants sont rangés dans `src/components/` 
-- Les fichiers CSS sont regroupés dans `src/css/` pour séparer les styles du code.
+- Les composants sont rangés dans `src/components/`.
+- Les fichiers CSS sont regroupés dans `src/css/` pour séparer les styles du code métier.
 
 ## Structure du fichier JSON (`public/sites.json`)
 
@@ -130,7 +130,7 @@ Pour ajouter une nouvelle couleur utilisable dans vos blocs :
 
 - **Données** : Modifiez `public/sites.json` pour changer les blocs, tuiles, liens, etc.
 - **Styles** : Adaptez les fichiers dans `src/css/` pour personnaliser l’apparence.
-- **Composants** : Ajoutez ou modifiez les composants React dans `src/`.
+- **Composants** : Ajoutez ou modifiez les composants React dans `src/components/`.
 
 ## Scripts disponibles
 
