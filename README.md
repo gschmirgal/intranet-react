@@ -5,6 +5,7 @@ Ce projet est une application d’intranet réalisée avec [React](https://react
 ## Fonctionnalités
 
 - Affichage de blocs et de tuiles dynamiques à partir d’un fichier JSON (`public/sites.json`)
+- Recherche et filtrage en temps réel
 - Styles personnalisés avec gestion centralisée des couleurs (`src/css/App_colors.css`)
 - Responsive et moderne grâce à Flexbox et CSS custom
 - Facilement personnalisable via le JSON et les fichiers CSS
@@ -14,23 +15,28 @@ Ce projet est une application d’intranet réalisée avec [React](https://react
 ```
 intranet-react/
 ├── public/
-│   └── sites.json           # Données des blocs/tuiles (JSON)
+│   ├── sites.json           # Données des blocs/tuiles (JSON)
+│   └── images/              # Images statiques (backgrounds, logos, etc.)
 ├── src/
 │   ├── components/
 │   │   ├── Body.js          # Composant principal qui gère l'affichage global
 │   │   ├── Bloc.js          # Composant pour chaque bloc
-│   │   └── CheckBox.js      # Composant pour les cases à cocher (si utilisé)
+│   │   ├── Tuile.js         # Composant pour chaque tuile
+│   │   ├── CheckBox.js      # Composant case à cocher
+│   │   ├── Filter.js        # Composant champ de filtre
+│   │   └── SearchExpandContext.js # Fournisseur de contexte pour la recherche/expansion
 │   ├── css/
 │   │   ├── App_common.css   # Styles communs à toute l'application
-│   │   └── App_colors.css   # Couleurs centralisées (variables CSS)
+│   │   ├── App_colors.css   # Couleurs centralisées (variables CSS)
+│   │   └── App_screen.css   # Styles spécifiques à l'affichage écran
 │   ├── images/              # Images utilisées dans le code (background, etc.)
 │   ├── index.js             # Point d’entrée React
-│   └── App.js               # Composant racine (si utilisé)
 └── README.md
 ```
 
+- Place tes images dans `public/images/` ou `src/images/` selon leur usage.
 - Les composants sont rangés dans `src/components/`.
-- Les fichiers CSS sont regroupés dans `src/css/` pour séparer les styles du code métier.
+- Les fichiers CSS sont regroupés dans `src/css/` pour séparer les styles du code.
 
 ## Structure du fichier JSON (`public/sites.json`)
 
@@ -152,5 +158,3 @@ N’hésitez pas à ouvrir une issue ou une pull request.
 ## Licence
 
 Ce projet est sous licence MIT.
-
----
