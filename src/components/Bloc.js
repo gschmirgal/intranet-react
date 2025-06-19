@@ -1,22 +1,21 @@
+import { useContext } from 'react';
+import { SearchExpandContext } from "./SearchExpandContext";
+
 /**
  * Composant Bloc
  * Affiche un bloc contenant un titre et une liste de tuiles, avec une couleur de fond personnalisée.
  *
  * @param {Object} props - Propriétés du composant
  * @param {Object} props.bloc - Objet bloc (titre, couleur, tuiles)
- * @param {boolean} props.expanded - Indique si les tuiles sont en mode étendu
- * @param {string} props.search - Texte de recherche pour filtrer les tuiles/lignes
  * @returns {JSX.Element}
  */
-export default function Bloc({bloc, expanded, search}) {
+export default function Bloc({bloc}) {
   // Génère la liste des tuiles à partir du bloc JSON
   let tuiles = [];
   if (bloc && bloc.tuiles) {
     tuiles = bloc.tuiles.map((tuile, idx) => (
       <Tuile 
         tuile={tuile} 
-        expanded={expanded}
-        search={search}
         key={tuile.nom || idx} 
       />
     ));
@@ -40,18 +39,18 @@ export default function Bloc({bloc, expanded, search}) {
  *
  * @param {Object} props - Propriétés du composant
  * @param {Object} props.tuile - Objet tuile (nom, lien, lignes)
- * @param {boolean} props.expanded - Mode étendu ou réduit
- * @param {string} props.search - Texte de recherche
  * @returns {JSX.Element}
  */
-export function Tuile({tuile, expanded, search}) {
+export function Tuile({tuile}) {
   let subs = [];
+  // Récupère le filtre de recherche et l'état d'expansion depuis le contexte global
+  const {filter, expanded} = useContext(SearchExpandContext);
   // Vérifie si le titre de la tuile correspond à la recherche
-  let titlematch = testSearchElement(tuile, false,search);
+  let titlematch = testSearchElement(tuile, false,filter);
   if (tuile.lignes) {
     // Filtre les lignes selon la recherche (ou affiche tout si le titre matche)
     subs = tuile.lignes
-      .filter(testSearchElementFilter(titlematch, search))
+      .filter(testSearchElementFilter(titlematch, filter))
       .map((sub, idx) => (
         <Ligne ligne={sub} key={sub.lien || idx} />
       ));
@@ -60,7 +59,7 @@ export function Tuile({tuile, expanded, search}) {
   if (subs.length === 0 && !titlematch) {
     return <></>;
   }
-  // Affiche le titre comme lien si présent
+  // Affiche le titre comme lien si présent, sinon texte simple
   let titre = tuile.lien
     ? <a href={tuile.lien} target='_blank' rel='noreferrer'>{tuile.nom}</a>
     : tuile.nom;
@@ -68,7 +67,7 @@ export function Tuile({tuile, expanded, search}) {
   if (subs.length > 0) {
     subs = (<ul>{subs}</ul>);
   }
-  // Gère la classe CSS selon l'état d'expansion
+  // Gère la classe CSS selon l'état d'expansion (étendu/réduit)
   let className = "tuile ";
   className += expanded ? "expanded" : "collapsed";
   return (
@@ -88,6 +87,7 @@ export function Tuile({tuile, expanded, search}) {
  * @returns {JSX.Element}
  */
 export function Ligne({ligne}) {
+  // Affiche la ligne comme lien si présent, sinon texte simple
   if( ligne.lien) {
     return (<li><a href={ligne.lien} target='_blank' rel='noreferrer'>{ligne.nom}</a></li>)
   }else{
@@ -102,6 +102,7 @@ export function Ligne({ligne}) {
  * @returns {function}
  */
 function testSearchElementFilter(alreadyGood, search){
+  // Retourne une fonction qui teste chaque élément selon la recherche
   return function(element) {
     return testSearchElement(element, alreadyGood, search);
   }
@@ -115,6 +116,8 @@ function testSearchElementFilter(alreadyGood, search){
  * @returns {boolean}
  */
 function testSearchElement(element, alreadyGood, search) {
+  // Retourne true si le parent matche, 
+  // ou si le nom/lien contient la recherche (insensible à la casse)
   return (
     alreadyGood ||
     (!search) ||

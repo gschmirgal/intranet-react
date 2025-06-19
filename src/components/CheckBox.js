@@ -10,7 +10,7 @@
  * @returns {JSX.Element} The rendered checkbox component.
  */
 export default function CheckBox({checked, onChange, label, id}){
-    return <div>
+    return <div className="checkbox-container">
         <input
             type="checkbox"
             checked={checked}

@@ -77,6 +77,10 @@ p {
   transition: all 0.4s;
 }
 
+.main{
+   padding-top: 35px;
+}
+
 .bloc h1 {
   font-size: 20px;
   color: #fff;
@@ -107,10 +111,18 @@ body {
   background-size: 100%;
 }
 
-#main {
-  padding-top: 45px;
-  display: inline-block;
-  height: 100%;
-  padding-right: 290px;
-  min-width: 475px;
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  background-image: linear-gradient(270deg,rgba(179, 191, 232, 0.4) 0%, rgba(179, 191, 232, 1) 50%);
+  z-index: 100;
+}
+
+.checkbox-container, .filter-container {
+  padding: 5px;
+  display:inline-block;
+  color:white
 }

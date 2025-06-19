@@ -10,7 +10,7 @@
  * @returns {JSX.Element} The rendered checkbox component.
  */
 export default function Filter({value, onChange, label, id}){
-    return <div>
+    return <div className="filter-container">
         <input
             type="text"
             value={value}
