@@ -12,13 +12,18 @@ import { useEffect, useState } from 'react';
 
 import Bloc from './Bloc.js';
 import CheckBox from './CheckBox.js';
+import Filter from './Filter.js';
 
 function Body() {
-  const [dataJson, setDataJson] = useState();
-  const [expanded, setExpanded] = useState(false);
+  let [dataJson, setDataJson] = useState();
+  let [expanded, setExpanded] = useState(false);
+  let [filter, setFilter] = useState('');
 
   const handleExpand = (value) => {
     setExpanded(value);
+  };
+  const handleFilter = (e) => {
+    setFilter(e.target.value);
   };
 
   // Chargement du JSON depuis le fichier sites.json
@@ -31,13 +36,25 @@ function Body() {
 
   // Affichage des tuiles à partir des blocs du JSON
   let blocs = [];
+
+  if( filter ){
+    filter = filter.toLowerCase();
+    expanded = true; // Si un filtre est appliqué, on étend tous les blocs
+  }
+
   if (dataJson && dataJson.blocs) {
     blocs = dataJson.blocs.map((bloc, idx) => (
-      <Bloc bloc={bloc} expanded={expanded} key={bloc.titre || idx} />
+      <Bloc bloc={bloc} expanded={expanded} search={filter} key={bloc.titre || idx} />
     ));
   }
 
   return (<div className="main">
+    <Filter 
+      value ={filter}
+      onChange={handleFilter}
+      label="Filter blocs"
+      id="filter-input"
+    />
       <CheckBox
         checked={expanded}
         onChange={handleExpand}
@@ -48,5 +65,4 @@ function Body() {
     </div>
   );
 }
-
 export default Body;
