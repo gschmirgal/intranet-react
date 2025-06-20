@@ -41,7 +41,7 @@ intranet-react/
 ## Structure du fichier JSON (`public/sites.json`)
 
 Le fichier `sites.json` contient la liste des blocs et des tuiles à afficher sur l’intranet.
-
+ 
 ### Exemple de structure
 
 ```json
