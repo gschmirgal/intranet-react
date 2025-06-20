@@ -121,7 +121,7 @@ function testSearchElement(element, alreadyGood, search) {
   return (
     alreadyGood ||
     (!search) ||
-    (element.nom.toLowerCase().includes(search)) ||
+    (element.nom  && element.nom.toLowerCase().includes(search)) ||
     (element.lien && element.lien.toLowerCase().includes(search))
   );
 }
