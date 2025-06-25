@@ -20,15 +20,13 @@ intranet-react/
 ├── src/
 │   ├── components/
 │   │   ├── Body.js          # Composant principal qui gère l'affichage global
-│   │   ├── Bloc.js          # Composant pour chaque bloc
-│   │   ├── Tuile.js         # Composant pour chaque tuile
+│   │   ├── Bloc.js          # Composant pour chaque bloc & ses enfants
 │   │   ├── CheckBox.js      # Composant case à cocher
 │   │   ├── Filter.js        # Composant champ de filtre
 │   │   └── SearchExpandContext.js # Fournisseur de contexte pour la recherche/expansion
 │   ├── css/
 │   │   ├── App_common.css   # Styles communs à toute l'application
-│   │   ├── App_colors.css   # Couleurs centralisées (variables CSS)
-│   │   └── App_screen.css   # Styles spécifiques à l'affichage écran
+│   │   └── App_colors.css   # Couleurs centralisées (variables CSS)
 │   ├── images/              # Images utilisées dans le code (background, etc.)
 │   ├── index.js             # Point d’entrée React
 └── README.md
